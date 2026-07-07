@@ -19,7 +19,7 @@ This project implements an intermittent computing emulator for a RISC-V processo
 ## Architecture
 
 <p align="center">
-  <img src="docs/architecture.png" width="400">
+  <img src="images/architecture.jpg" width="400">
 </p>
 
 ## Repository Structure
