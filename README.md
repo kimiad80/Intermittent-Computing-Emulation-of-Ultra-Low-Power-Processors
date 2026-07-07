@@ -25,14 +25,18 @@ This project implements an intermittent computing emulator for a RISC-V processo
 |           └── ibex_*.sv   # Ibex core systemverilog codes
 |    └── intermittent/
 |           └── *.sv        # Intermittency support wrapper
+|
 ├── scripts/                # Utility scripts
 |    └── bin_to_mem.py      # Binary (.bin) to verilog memory (.mem) support
+|
 ├── software/               # RISC-V software
 |    ├── main.c
 |    ├── crt0.s
 |    └── link.ld
+|
 ├── tb/                     # Testbench
 |    └── intermittent_tb.sv
+|
 └── README.md
 ```
 
@@ -53,7 +57,7 @@ riscv32-unknown-elf-objcopy -O binary software/program.elf software/program.bin
 Convert the generated binary into a Verilog memory file:
 
 ```bash
-python scripts/bin_to_mem.py software/program.bin rtl/program.mem
+python scripts/bin_to_mem.py software/program.bin rtl/intermittent/program.mem
 ```
 
 ## Simulation
