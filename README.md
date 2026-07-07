@@ -56,7 +56,8 @@ riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c software/main.c -o s
 riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c software/crt0.S -o software/crt0.o
 
 riscv32-unknown-elf-gcc -nostartfiles -T software/link.ld software/crt0.o software/main.o -o software/program.elf
-
+```
+```bash
 riscv32-unknown-elf-objcopy -O binary software/program.elf software/program.bin 
 ```
 
