@@ -20,11 +20,19 @@ This project implements an intermittent computing emulator for a RISC-V processo
 
 ```
 .
-├── rtl/                 # RTL source files
-├── tb/                  # Testbench
-├── software/            # RISC-V software
-├── scripts/             # Utility scripts
-├── output.mem           # Instruction memory image
+├── rtl/                    # RTL source files
+|    └── ibex_core/
+|           └── ibex_*.sv   # Ibex core systemverilog codes
+|    └── intermittent/
+|           └── *.sv        # Intermittency support wrapper
+├── scripts/                # Utility scripts
+|    └── bin_to_mem.py      # Binary (.bin) to verilog memory (.mem) support
+├── software/               # RISC-V software
+|    ├── main.c
+|    ├── crt0.s
+|    └── link.ld
+├── tb/                     # Testbench
+|    └── intermittent_tb.sv
 └── README.md
 ```
 
@@ -33,19 +41,19 @@ This project implements an intermittent computing emulator for a RISC-V processo
 Compile the software using a RISC-V GCC toolchain:
 
 ```bash
-riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c main.c -o main.o
+riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c software/main.c -o software/main.o
 
-riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c crt0.S -o crt0.o
+riscv32-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -c software/crt0.S -o software/crt0.o
 
-riscv32-unknown-elf-gcc -nostartfiles -T link.ld crt0.o main.o -o program.elf
+riscv32-unknown-elf-gcc -nostartfiles -T software/link.ld software/crt0.o software/main.o -o software/program.elf
 
-riscv32-unknown-elf-objcopy -O binary program.elf program.bin 
+riscv32-unknown-elf-objcopy -O binary software/program.elf software/program.bin 
 ```
 
 Convert the generated binary into a Verilog memory file:
 
 ```bash
-python bin_to_mem.py program.bin program.mem
+python scripts/bin_to_mem.py software/program.bin rtl/program.mem
 ```
 
 ## Simulation

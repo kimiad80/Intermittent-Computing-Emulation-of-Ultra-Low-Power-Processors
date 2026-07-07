@@ -11,7 +11,7 @@ module Instruction_Memory (
 	logic [31:0] addr;
 
     initial begin
-		$readmemh("output.mem", instmem);
+		$readmemh("program.mem", instmem);
 	end
 
     assign instr_gnt_o = instr_req_i;

@@ -1,6 +1,6 @@
 `timescale 1us / 1us
 
-module Intermittent_tb ();
+module intermittent_tb ();
 
 logic clk, nv_rst;
 
