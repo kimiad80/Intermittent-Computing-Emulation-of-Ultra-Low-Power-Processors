@@ -16,6 +16,10 @@ This project implements an intermittent computing emulator for a RISC-V processo
 - SystemVerilog implementation
 - RISC-V software examples
 
+## Architecture
+
+![Architecture](images/architecture.jpg)
+
 ## Repository Structure
 
 ```
