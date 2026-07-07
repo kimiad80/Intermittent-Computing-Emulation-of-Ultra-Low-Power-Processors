@@ -1,4 +1,4 @@
-# Intermittent-Computing-Emulation-of-Ultra-Low-Power-Processors
+# Intermittent Computing Emulation of Ultra-Low-Power Processors
 A SystemVerilog implementation of the paper:
 
 > *Intermittent Computing Emulation of Ultra-Low-Power Processors: Evaluation of Backup Strategies for RISC-V*
